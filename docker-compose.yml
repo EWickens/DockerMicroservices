@@ -1,0 +1,49 @@
+version: "3.7"
+
+services:
+
+  adminapp:
+    build: ./AdminMicro/
+    container_name: adminapp
+    restart: always
+    environment:
+      - APP_NAME=AdminService
+    ports:
+      - "5000:5000"
+    expose:
+      - 5000
+
+
+  dbapp:
+    build: ./DbMicro/
+    container_name: dbapp
+    restart: always
+    environment:
+      - APP_NAME=DBService
+    ports:
+      - "5001:5001"
+    expose:
+      - 5001
+    links:
+      - db
+
+
+  userapp:
+    build: ./UserMicro
+    container_name: userapp
+    restart: always
+    environment:
+      - APP_NAME=UserService
+    ports:
+      - "5002:5002"
+    expose:
+      - 5002
+  
+  db:
+    image: couchdb
+    ports:
+      - "5984:5984"
+    expose:
+      - 5984
+
+

@@ -1,0 +1,38 @@
+{% extends "admin/templates/admin_template.html" %}
+
+{% block title %}Get Event Info{% endblock %}
+
+{% block main %}
+
+<div class="container">
+  <div class="row">
+    <div class="col">
+      <h1>Search for an event</h1>
+        <h3>Enter and identification number below</h3>
+
+         <form action="http://localhost:5001/db_handler/get_event" method="POST">
+
+            <div class="form-group">
+            <label>Identification Number</label>
+                 <input type="text" class="form-control" id="_id" name="_id" placeholder="Identification number">
+            </div>
+            <button type="submit" class="btn btn-primary">Search for Event</button>
+
+            {% if feedback %}
+            <p class="text-danger float-right">{{ feedback }}</p>
+            {% endif %}
+
+<!--            <p class="text-success float-right">{{ successback }}</p>-->
+             {% if event %}
+            <ul>
+                {% for key, value in event.items() %}
+                <li>{{ key }}, {{ value }} </li>
+                 {% endfor %}
+             </ul>
+            {% endif %}
+        </form>
+    </div>
+  </div>
+</div>
+
+{% endblock %}

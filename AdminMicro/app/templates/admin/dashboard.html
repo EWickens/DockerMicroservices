@@ -1,0 +1,27 @@
+{% extends "admin/templates/admin_template.html" %}
+
+{% block title %}Admin dashboard{% endblock %}
+
+{% block main %}
+
+<div class="container">
+  <div class="row">
+    <div class="col">
+      <h1>Admin dashboard</h1>
+       <button onclick="window.location.href = 'http://localhost:5001/db_handler/get_events'">View Events</button>
+
+       {% if retrows %}
+            <ul>
+              {% for each in retrows %}
+                {% for key, value in each.items() %}
+                <li>{{ key }}, {{ value }} </li>
+                 {% endfor %}
+              <br><br>
+              {% endfor %}
+             </ul>
+            {% endif %}
+    </div>
+  </div>
+</div>
+
+{% endblock %}

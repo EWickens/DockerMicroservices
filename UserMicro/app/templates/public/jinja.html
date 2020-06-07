@@ -1,0 +1,33 @@
+{% extends "public/templates/public_template.html" %}
+
+{% block title %}Jinja{% endblock %}
+
+{% block main %}
+
+<div class="container">
+  <div class="row">
+    <div class="col">
+      <h1>Jinja</h1>
+      <hr>
+<h4>Accessing an objects value</h4>
+<hr>
+<p>Hello {{ my_name }}!</p>
+<h4>Looping through an iterable</h4>
+<hr>
+
+<h4>Looping and enumerating an iterable</h4>
+<hr>
+
+<strong class="d-block mb-3">Programming languages</strong>
+<ul>
+  {% for lang in langs %}
+  <li>{{ loop.index }} - {{ lang }}</li>
+  {% endfor %}
+</ul>
+
+
+    </div>
+  </div>
+</div>
+
+{% endblock %}
